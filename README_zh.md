@@ -1,11 +1,11 @@
-# Astraeus (FuFanManus) - AI智能体平台
+# Astraeus - AI智能体平台
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.11+-blue.svg)](https://python.org)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.116+-green.svg)](https://fastapi.tiangolo.com)
 [![Node.js](https://img.shields.io/badge/Node.js-18+-green.svg)](https://nodejs.org)
 
-Astraeus（又名 FuFanManus）是一个基于 Suna 项目的综合性、生产就绪的 AI 智能体平台。该项目经过重构，支持本地私有化部署和中国开发者生态系统，能够在安全、可扩展的环境中创建、部署和管理具有强大能力的智能体。
+Astraeus 是一个综合性、生产就绪的 AI 智能体平台，专为本地私有化部署和全球开发者生态系统设计。能够在安全、可扩展的环境中创建、部署和管理具有强大能力的智能体。
 
 ## 🌟 核心特性
 
@@ -22,14 +22,14 @@ Astraeus（又名 FuFanManus）是一个基于 Suna 项目的综合性、生产�
 
 ## 🏗️ 系统架构
 
-Astraeus 从 Suna 项目重构而来，针对本地部署进行了重大改进：
+Astraeus 采用现代化的可扩展架构，专为本地部署优化：
 
-### 原 Suna 架构依赖已移除：
-- ❌ Supabase 云数据库 → ✅ 本地 PostgreSQL
-- ❌ Daytona 沙箱服务 → ✅ PPIO 沙箱环境
-- ❌ 原生 LLM API → ✅ Google ADK 框架统一管理
+### 核心架构组件：
+- ✅ 本地 PostgreSQL 提供数据持久化
+- ✅ PPIO 沙箱环境确保安全执行
+- ✅ Google ADK 框架统一管理 LLM
 
-### 新架构图：
+### 架构总览：
 
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
@@ -75,8 +75,8 @@ npm run dev  # 启动前端服务 http://localhost:3000
 cd backend  # 进入后端目录
 
 # 创建虚拟环境
-conda create -n fufanmanus python=3.11
-conda activate fufanmanus
+conda create -n astraeus python=3.11
+conda activate astraeus
 
 # 安装依赖
 pip install -r requirements.txt
@@ -90,7 +90,7 @@ pip install -r requirements.txt
 # 配置数据库
 python scripts/01_setup_database.py  # 配置 PostgreSQL
 python scripts/02_setup_redis.py     # 配置 Redis
-python scripts/03_init_fufanmanus_table.py  # 初始化数据表
+python scripts/03_init_astraeus_table.py  # 初始化数据表
 ```
 
 #### 5. 环境变量配置
@@ -100,7 +100,7 @@ python scripts/03_init_fufanmanus_table.py  # 初始化数据表
 # 数据库配置
 POSTGRES_HOST=localhost
 POSTGRES_PORT=5432
-POSTGRES_DB=fufanmanus
+POSTGRES_DB=astraeus
 POSTGRES_USER=postgres
 POSTGRES_PASSWORD=your_password
 
@@ -173,9 +173,9 @@ sudo systemctl enable postgresql
 
 创建数据库：
 ```sql
-CREATE DATABASE fufanmanus;
-CREATE USER fufanmanus WITH PASSWORD 'your_password';
-GRANT ALL PRIVILEGES ON DATABASE fufanmanus TO fufanmanus;
+CREATE DATABASE astraeus;
+CREATE USER astraeus WITH PASSWORD 'your_password';
+GRANT ALL PRIVILEGES ON DATABASE astraeus TO astraeus;
 ```
 
 #### Redis 安装
@@ -310,7 +310,7 @@ python api.py    # 启动开发服务器
 ├── agent/                # 智能体执行系统
 │   ├── run.py           # 核心智能体运行器
 │   ├── tools/           # 智能体工具目录
-│   └── fufanmanus/      # 智能体配置
+│   └── config/          # 智能体配置
 ├── auth/                # 认证系统
 ├── composio_integration/ # 第三方集成
 ├── sandbox/             # 沙箱环境
@@ -397,17 +397,15 @@ import sentry_sdk
 - API 端点速率限制
 - 通过 SQLAlchemy ORM 防止 SQL 注入
 
-## 🆚 与 Suna 的对比
+## 🌟 平台优势
 
-| 特性 | Suna | Astraeus (FuFanManus) |
-|---------|------|----------------------|
-| 数据库 | Supabase (云) | PostgreSQL (本地) |
-| 沙箱 | Daytona | PPIO |
-| LLM 集成 | 原生 API | Google ADK 框架 |
-| 部署方式 | 仅云端 | 本地/云端 |
-| 中文支持 | 有限 | 完整支持 |
-| 本地化 | 英文 | 中英文 |
-| 自托管 | 困难 | 简单 |
+Astraeus 为 AI 智能体开发提供以下关键优势：
+
+- **本地优先架构** - 完整的数据隐私和控制权
+- **灵活的 LLM 集成** - 通过 Google ADK 支持多个提供商
+- **安全的沙箱环境** - 使用 PPIO 进行隔离执行
+- **可扩展设计** - 兼顾开发和生产环境
+- **开发者友好** - 易于设置和完整的文档
 
 ## 🛠️ 可用工具
 
@@ -444,7 +442,6 @@ import sentry_sdk
 
 ## 🙏 致谢
 
-- [Suna](https://github.com/kortix-ai/suna) - 项目基础（Apache-2.0 许可证）
 - [Google ADK](https://github.com/google/agent-development-kit) - 智能体开发框架
 - [LiteLLM](https://github.com/BerriAI/litellm) - 统一 LLM 接口
 - [FastAPI](https://fastapi.tiangolo.com/) - 现代 Web 框架

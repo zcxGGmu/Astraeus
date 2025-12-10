@@ -1,11 +1,11 @@
-# Astraeus (FuFanManus) - AI Agent Platform
+# Astraeus - AI Agent Platform
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.11+-blue.svg)](https://python.org)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.116+-green.svg)](https://fastapi.tiangolo.com)
 [![Node.js](https://img.shields.io/badge/Node.js-18+-green.svg)](https://nodejs.org)
 
-Astraeus (also known as FuFanManus) is a comprehensive, production-ready AI Agent platform based on the Suna project, refactored to support local private deployment and the Chinese developer ecosystem. It enables the creation, deployment, and management of intelligent agents with powerful capabilities in a secure, scalable environment.
+Astraeus is a comprehensive, production-ready AI Agent platform designed for local private deployment and global developer ecosystems. It enables the creation, deployment, and management of intelligent agents with powerful capabilities in a secure, scalable environment.
 
 ## 🌟 Key Features
 
@@ -22,14 +22,14 @@ Astraeus (also known as FuFanManus) is a comprehensive, production-ready AI Agen
 
 ## 🏗️ System Architecture
 
-Astraeus is refactored from the Suna project with significant improvements for local deployment:
+Astraeus features a modern, scalable architecture optimized for local deployment:
 
-### Original Suna Architecture Dependencies Removed:
-- ❌ Supabase cloud database → ✅ Local PostgreSQL
-- ❌ Daytona sandbox service → ✅ PPIO sandbox environment
-- ❌ Native LLM APIs → ✅ Google ADK framework unified management
+### Key Architecture Components:
+- ✅ Local PostgreSQL for data persistence
+- ✅ PPIO sandbox environment for secure agent execution
+- ✅ Google ADK framework for unified LLM management
 
-### New Architecture:
+### Architecture Overview:
 
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
@@ -75,8 +75,8 @@ npm run dev  # Start frontend on http://localhost:3000
 cd backend  # Navigate to backend directory
 
 # Create virtual environment
-conda create -n fufanmanus python=3.11
-conda activate fufanmanus
+conda create -n astraeus python=3.11
+conda activate astraeus
 
 # Install dependencies
 pip install -r requirements.txt
@@ -90,7 +90,7 @@ pip install -r requirements.txt
 # Configure database
 python scripts/01_setup_database.py  # Configure PostgreSQL
 python scripts/02_setup_redis.py     # Configure Redis
-python scripts/03_init_fufanmanus_table.py  # Initialize tables
+python scripts/03_init_astraeus_table.py  # Initialize tables
 ```
 
 #### 5. Environment Configuration
@@ -100,7 +100,7 @@ Create a `.env` file in the backend directory:
 # Database Configuration
 POSTGRES_HOST=localhost
 POSTGRES_PORT=5432
-POSTGRES_DB=fufanmanus
+POSTGRES_DB=astraeus
 POSTGRES_USER=postgres
 POSTGRES_PASSWORD=your_password
 
@@ -173,9 +173,9 @@ sudo systemctl enable postgresql
 
 Create database:
 ```sql
-CREATE DATABASE fufanmanus;
-CREATE USER fufanmanus WITH PASSWORD 'your_password';
-GRANT ALL PRIVILEGES ON DATABASE fufanmanus TO fufanmanus;
+CREATE DATABASE astraeus;
+CREATE USER astraeus WITH PASSWORD 'your_password';
+GRANT ALL PRIVILEGES ON DATABASE astraeus TO astraeus;
 ```
 
 #### Redis Installation
@@ -310,7 +310,7 @@ python api.py    # Start development server
 ├── agent/                # Agent execution system
 │   ├── run.py           # Core agent runner
 │   ├── tools/           # Agent tools directory
-│   └── fufanmanus/      # Agent configuration
+│   └── config/          # Agent configuration
 ├── auth/                # Authentication system
 ├── composio_integration/ # Third-party integrations
 ├── sandbox/             # Sandbox environment
@@ -397,17 +397,15 @@ import sentry_sdk
 - Rate limiting on API endpoints
 - SQL injection prevention through SQLAlchemy ORM
 
-## 🆚 Comparison with Suna
+## 🌟 Platform Advantages
 
-| Feature | Suna | Astraeus (FuFanManus) |
-|---------|------|----------------------|
-| Database | Supabase (Cloud) | PostgreSQL (Local) |
-| Sandbox | Daytona | PPIO |
-| LLM Integration | Native APIs | Google ADK Framework |
-| Deployment | Cloud Only | Local/Cloud |
-| Chinese Support | Limited | Full Support |
-| Localization | English | Chinese/English |
-| Self-Hosting | Difficult | Easy |
+Astraeus offers several key advantages for AI agent development:
+
+- **Local-First Architecture** - Complete data privacy and control
+- **Flexible LLM Integration** - Support for multiple providers through Google ADK
+- **Secure Sandbox Environment** - Isolated execution with PPIO
+- **Scalable Design** - Built for both development and production
+- **Developer Friendly** - Easy setup and comprehensive documentation
 
 ## 🛠️ Available Tools
 
@@ -444,7 +442,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙏 Acknowledgments
 
-- [Suna](https://github.com/kortix-ai/suna) - Original project foundation (Apache-2.0 License)
 - [Google ADK](https://github.com/google/agent-development-kit) - Agent development framework
 - [LiteLLM](https://github.com/BerriAI/litellm) - Unified LLM interface
 - [FastAPI](https://fastapi.tiangolo.com/) - Modern web framework
