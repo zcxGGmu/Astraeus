@@ -1,4 +1,4 @@
-# Astraeus - AI Agent Platform
+# Astraeus - A general-purpose AI Agent Platform
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.11+-blue.svg)](https://python.org)
