@@ -5,6 +5,8 @@
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.116+-green.svg)](https://fastapi.tiangolo.com)
 [![Node.js](https://img.shields.io/badge/Node.js-18+-green.svg)](https://nodejs.org)
 
+**Language:** [English](README.md) | [中文](README_zh.md)
+
 Astraeus is a comprehensive, production-ready AI Agent platform designed for local private deployment and global developer ecosystems. It enables the creation, deployment, and management of intelligent agents with powerful capabilities in a secure, scalable environment.
 
 ## 🌟 Key Features
