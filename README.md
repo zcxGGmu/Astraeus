@@ -20,96 +20,96 @@ Astraeus is a comprehensive, production-ready AI Agent platform designed for loc
 - 🏠 **Local Deployment** - Complete private deployment with PostgreSQL and Redis
 - 🇨🇳 **China Optimized** - Designed for Chinese developers and services
 
-## 🏗️ 系统架构
+## 🏗️ System Architecture
 
-Astraeus 采用现代化的分布式架构设计，专为本地私有部署优化：
+Astraeus features a modern, distributed architecture designed for local private deployment:
 
-### 核心架构组件：
-- ✅ **PostgreSQL** - 本地数据持久化存储
-- ✅ **PPIO 沙箱环境** - 安全的代理执行环境
-- ✅ **Google ADK 框架** - 统一的 LLM 管理接口
-- ✅ **FastAPI** - 高性能异步 API 服务
-- ✅ **Next.js 15** - 现代化前端框架
+### Key Architecture Components:
+- ✅ **PostgreSQL** - Local data persistence storage
+- ✅ **PPIO Sandbox Environment** - Secure agent execution environment
+- ✅ **Google ADK Framework** - Unified LLM management interface
+- ✅ **FastAPI** - High-performance asynchronous API service
+- ✅ **Next.js 15** - Modern frontend framework
 
-### 系统整体架构图
+### System Architecture Overview
 
 ```mermaid
 graph TB
-    %% 用户层
-    subgraph "用户界面层"
-        WEB[Web 浏览器]
-        UI[Next.js 前端应用]
+    %% User Layer
+    subgraph "User Interface Layer"
+        WEB[Web Browser]
+        UI[Next.js Frontend Application]
     end
 
-    %% API 网关层
-    subgraph "API 网关层"
-        API[FastAPI 服务器]
-        AUTH[JWT 认证中间件]
-        CORS[CORS 中间件]
+    %% API Gateway Layer
+    subgraph "API Gateway Layer"
+        API[FastAPI Server]
+        AUTH[JWT Authentication Middleware]
+        CORS[CORS Middleware]
     end
 
-    %% 业务服务层
-    subgraph "业务服务层"
-        AGENT_SVC[代理服务]
-        PROJECT_SVC[项目管理服务]
-        THREAD_SVC[对话线程服务]
-        BILLING_SVC[计费服务]
-        SANDBOX_SVC[沙箱管理服务]
-        TRIGGER_SVC[触发器服务]
+    %% Business Service Layer
+    subgraph "Business Service Layer"
+        AGENT_SVC[Agent Service]
+        PROJECT_SVC[Project Management Service]
+        THREAD_SVC[Conversation Thread Service]
+        BILLING_SVC[Billing Service]
+        SANDBOX_SVC[Sandbox Management Service]
+        TRIGGER_SVC[Trigger Service]
     end
 
-    %% 核心组件层
-    subgraph "核心组件层"
-        ADK[Google ADK 框架]
-        LLM[LLM 管理器]
-        WORKFLOW[工作流引擎]
-        TOOL_REGISTRY[工具注册表]
-        MCP[MCP 集成]
+    %% Core Component Layer
+    subgraph "Core Component Layer"
+        ADK[Google ADK Framework]
+        LLM[LLM Manager]
+        WORKFLOW[Workflow Engine]
+        TOOL_REGISTRY[Tool Registry]
+        MCP[MCP Integration]
     end
 
-    %% 工具执行层
-    subgraph "工具执行层"
-        COMPUTER[计算机使用工具]
-        BROWSER[浏览器自动化工具]
-        SEARCH[网络搜索工具]
-        CODE[代码解释器工具]
-        DATA[数据提供者工具]
+    %% Tool Execution Layer
+    subgraph "Tool Execution Layer"
+        COMPUTER[Computer Use Tool]
+        BROWSER[Browser Automation Tool]
+        SEARCH[Web Search Tool]
+        CODE[Code Interpreter Tool]
+        DATA[Data Provider Tool]
     end
 
-    %% 沙箱环境层
-    subgraph "沙箱环境层"
-        PPIO[PPIO 云沙箱]
-        DOCKER[Docker 容器]
-        VNC[VNC 远程桌面]
+    %% Sandbox Environment Layer
+    subgraph "Sandbox Environment Layer"
+        PPIO[PPIO Cloud Sandbox]
+        DOCKER[Docker Container]
+        VNC[VNC Remote Desktop]
     end
 
-    %% 后台任务层
-    subgraph "后台任务层"
-        DRAMATIQ[Dramatiq 任务队列]
-        WORKER[后台工作进程]
-        SCHEDULER[任务调度器]
+    %% Background Task Layer
+    subgraph "Background Task Layer"
+        DRAMATIQ[Dramatiq Task Queue]
+        WORKER[Background Worker Process]
+        SCHEDULER[Task Scheduler]
     end
 
-    %% 数据存储层
-    subgraph "数据存储层"
-        POSTGRES[(PostgreSQL 主库)]
-        REDIS[(Redis 缓存)]
-        FILES[文件存储]
-        SCREENSHOTS[截图存储]
+    %% Data Storage Layer
+    subgraph "Data Storage Layer"
+        POSTGRES[(PostgreSQL Primary)]
+        REDIS[(Redis Cache)]
+        FILES[File Storage]
+        SCREENSHOTS[Screenshot Storage]
     end
 
-    %% 外部集成层
-    subgraph "外部集成层"
+    %% External Integration Layer
+    subgraph "External Integration Layer"
         DEEPSEEK[DeepSeek API]
         OPENAI[OpenAI API]
-        QWEN[通义千问 API]
-        TAVILY[Tavily 搜索]
+        QWEN[Qwen API]
+        TAVILY[Tavily Search]
         FIRECRAWL[Firecrawl API]
-        COMPOSIO[Composio 集成]
-        LANGFUSE[Langfuse 监控]
+        COMPOSIO[Composio Integration]
+        LANGFUSE[Langfuse Monitoring]
     end
 
-    %% 连接关系
+    %% Connections
     WEB --> UI
     UI -.->|HTTPS/WebSocket| API
     API --> AUTH
@@ -140,7 +140,7 @@ graph TB
     PPIO --> DOCKER
     PPIO --> VNC
 
-    API -.->|异步任务| DRAMATIQ
+    API -.->|Async Tasks| DRAMATIQ
     DRAMATIQ --> WORKER
     DRAMATIQ --> SCHEDULER
 
@@ -175,13 +175,13 @@ graph TB
     style REDIS fill:#f1f8e9
 ```
 
-### 技术栈概览
+### Technology Stack Overview
 
 ```mermaid
-pie title 技术栈分布
-    "前端技术" : 25
-    "后端服务" : 30
-    "数据存储" : 15
+pie title Technology Stack Distribution
+    "Frontend Technology" : 25
+    "Backend Services" : 30
+    "Data Storage" : 15
     "AI/LLM" : 20
     "DevOps" : 10
 ```
@@ -345,92 +345,92 @@ redis-server redis.conf
 2. Get API key from dashboard
 3. Note template IDs from your sandbox templates
 
-## 🔧 核心功能模块架构
+## 🔧 Core Functional Module Architecture
 
-### 1. 代理执行系统架构
+### 1. Agent Execution System Architecture
 
 ```mermaid
 sequenceDiagram
-    participant User as 用户
-    participant Frontend as 前端应用
-    participant API as FastAPI服务
-    participant Agent as 代理服务
+    participant User as User
+    participant Frontend as Frontend App
+    participant API as FastAPI Service
+    participant Agent as Agent Service
     participant ADK as Google ADK
-    participant LLM as LLM服务
-    participant Tool as 工具系统
-    participant Sandbox as 沙箱环境
-    participant DB as 数据库
+    participant LLM as LLM Service
+    participant Tool as Tool System
+    participant Sandbox as Sandbox Environment
+    participant DB as Database
 
-    User->>Frontend: 发送任务请求
+    User->>Frontend: Send task request
     Frontend->>API: POST /api/agents/{id}/run
-    API->>Agent: 创建代理执行实例
-    Agent->>DB: 保存执行记录
+    API->>Agent: Create agent execution instance
+    Agent->>DB: Save execution record
 
-    loop 代理执行循环
-        Agent->>ADK: 处理用户输入
-        ADK->>LLM: 获取模型响应
-        LLM-->>ADK: 返回响应/工具调用
-        alt 需要工具调用
-            ADK->>Tool: 执行工具
-            Tool->>Sandbox: 在沙箱中执行
-            Sandbox-->>Tool: 返回执行结果
-            Tool-->>ADK: 返回结果
+    loop Agent Execution Loop
+        Agent->>ADK: Process user input
+        ADK->>LLM: Get model response
+        LLM-->>ADK: Return response/tool call
+        alt Tool call needed
+            ADK->>Tool: Execute tool
+            Tool->>Sandbox: Execute in sandbox
+            Sandbox-->>Tool: Return execution result
+            Tool-->>ADK: Return result
         end
-        ADK-->>Agent: 返回执行状态
-        Agent->>DB: 更新执行状态
-        Agent-->>Frontend: 流式返回结果
+        ADK-->>Agent: Return execution status
+        Agent->>DB: Update execution status
+        Agent-->>Frontend: Stream result
     end
 
-    Agent-->>API: 执行完成
-    API-->>Frontend: 返回最终结果
-    Frontend-->>User: 显示任务结果
+    Agent-->>API: Execution complete
+    API-->>Frontend: Return final result
+    Frontend-->>User: Display task result
 ```
 
-### 2. 数据流架构
+### 2. Data Flow Architecture
 
 ```mermaid
 flowchart LR
-    %% 数据输入
-    subgraph "数据输入层"
-        USER_INPUT[用户输入]
-        FILE_UPLOAD[文件上传]
-        API_INPUT[API 调用]
-        WEBHOOK[Webhook 触发]
+    %% Data Input
+    subgraph "Data Input Layer"
+        USER_INPUT[User Input]
+        FILE_UPLOAD[File Upload]
+        API_INPUT[API Call]
+        WEBHOOK[Webhook Trigger]
     end
 
-    %% 数据处理
-    subgraph "数据处理层"
-        VALIDATOR[数据验证器]
-        TRANSFORMER[数据转换器]
-        ENRICHER[数据增强器]
-        SANITIZER[数据清理器]
+    %% Data Processing
+    subgraph "Data Processing Layer"
+        VALIDATOR[Data Validator]
+        TRANSFORMER[Data Transformer]
+        ENRICHER[Data Enricher]
+        SANITIZER[Data Sanitizer]
     end
 
-    %% 业务逻辑
-    subgraph "业务逻辑层"
-        AGENT_LOGIC[代理处理逻辑]
-        WORKFLOW_ENGINE[工作流引擎]
-        RULE_ENGINE[规则引擎]
-        STATE_MACHINE[状态机]
+    %% Business Logic
+    subgraph "Business Logic Layer"
+        AGENT_LOGIC[Agent Processing Logic]
+        WORKFLOW_ENGINE[Workflow Engine]
+        RULE_ENGINE[Rule Engine]
+        STATE_MACHINE[State Machine]
     end
 
-    %% 数据存储
-    subgraph "数据存储层"
+    %% Data Storage
+    subgraph "Data Storage Layer"
         POSTGRES_DB[(PostgreSQL)]
         REDIS_CACHE[(Redis)]
-        FILE_STORAGE[文件系统]
-        VECTOR_STORE[向量数据库]
+        FILE_STORAGE[File System]
+        VECTOR_STORE[Vector Database]
     end
 
-    %% 数据输出
-    subgraph "数据输出层"
-        STREAM_RESPONSE[流式响应]
-        FILE_RESULT[文件结果]
-        DASHBOARD[仪表板]
-        NOTIFICATION[通知系统]
+    %% Data Output
+    subgraph "Data Output Layer"
+        STREAM_RESPONSE[Stream Response]
+        FILE_RESULT[File Result]
+        DASHBOARD[Dashboard]
+        NOTIFICATION[Notification System]
     end
 
-    %% 数据流
+    %% Data Flow
     USER_INPUT --> VALIDATOR
     FILE_UPLOAD --> TRANSFORMER
     API_INPUT --> ENRICHER
@@ -457,43 +457,43 @@ flowchart LR
     style STREAM_RESPONSE fill:#fff3e0
 ```
 
-### 3. 沙箱环境架构
+### 3. Sandbox Environment Architecture
 
 ```mermaid
 graph TB
-    subgraph "沙箱管理层"
-        SANDBOX_MGR[沙箱管理器]
-        RESOURCE_MGR[资源管理器]
-        LIFECYCLE[生命周期管理]
-        MONITOR[监控系统]
+    subgraph "Sandbox Management Layer"
+        SANDBOX_MGR[Sandbox Manager]
+        RESOURCE_MGR[Resource Manager]
+        LIFECYCLE[Lifecycle Management]
+        MONITOR[Monitoring System]
     end
 
-    subgraph "沙箱类型"
-        DOCKER_SANDBOX[Docker 容器沙箱]
-        VNC_SANDBOX[VNC 桌面沙箱]
-        BROWSER_SANDBOX[浏览器沙箱]
-        CLI_SANDBOX[命令行沙箱]
+    subgraph "Sandbox Types"
+        DOCKER_SANDBOX[Docker Container Sandbox]
+        VNC_SANDBOX[VNC Desktop Sandbox]
+        BROWSER_SANDBOX[Browser Sandbox]
+        CLI_SANDBOX[Command Line Sandbox]
     end
 
-    subgraph "执行环境"
-        PYTHON_ENV[Python 环境]
-        NODE_ENV[Node.js 环境]
-        SYSTEM_TOOLS[系统工具]
-        BROWSER_ENG[浏览器引擎]
+    subgraph "Execution Environment"
+        PYTHON_ENV[Python Environment]
+        NODE_ENV[Node.js Environment]
+        SYSTEM_TOOLS[System Tools]
+        BROWSER_ENG[Browser Engine]
     end
 
-    subgraph "安全隔离"
-        NETWORK_ISOLATION[网络隔离]
-        FILE_SYSTEM_ISOLATION[文件系统隔离]
-        PROCESS_ISOLATION[进程隔离]
-        RESOURCE_LIMITS[资源限制]
+    subgraph "Security Isolation"
+        NETWORK_ISOLATION[Network Isolation]
+        FILE_SYSTEM_ISOLATION[File System Isolation]
+        PROCESS_ISOLATION[Process Isolation]
+        RESOURCE_LIMITS[Resource Limits]
     end
 
-    subgraph "工具支持"
+    subgraph "Tool Support"
         PLAYWRIGHT[Playwright]
         SELENIUM[Selenium]
         PUPPETEER[Puppeteer]
-        CUSTOM_TOOLS[自定义工具]
+        CUSTOM_TOOLS[Custom Tools]
     end
 
     SANDBOX_MGR --> DOCKER_SANDBOX
@@ -521,36 +521,36 @@ graph TB
     style PLAYWRIGHT fill:#e8f5e9
 ```
 
-### 4. LLM 集成架构
+### 4. LLM Integration Architecture
 
 ```mermaid
 graph LR
-    subgraph "LLM 接口层"
-        ADK_WRAPPER[ADK 包装器]
-        LITE_LLM[LiteLLM 统一接口]
-        MODEL_ROUTER[模型路由器]
-        FALLBACK[故障转移]
+    subgraph "LLM Interface Layer"
+        ADK_WRAPPER[ADK Wrapper]
+        LITE_LLM[LiteLLM Unified Interface]
+        MODEL_ROUTER[Model Router]
+        FALLBACK[Fallback]
     end
 
-    subgraph "模型提供者"
+    subgraph "Model Providers"
         DEEPSEEK_MODEL[DeepSeek]
         OPENAI_MODEL[OpenAI]
-        QWEN_MODEL[通义千问]
-        LOCAL_MODEL[本地模型]
+        QWEN_MODEL[Qwen]
+        LOCAL_MODEL[Local Model]
     end
 
-    subgraph "模型管理"
-        MODEL_CACHE[模型缓存]
-        TOKEN_COUNTER[Token 计数器]
-        RATE_LIMITER[速率限制器]
-        COST_TRACKER[成本追踪]
+    subgraph "Model Management"
+        MODEL_CACHE[Model Cache]
+        TOKEN_COUNTER[Token Counter]
+        RATE_LIMITER[Rate Limiter]
+        COST_TRACKER[Cost Tracker]
     end
 
-    subgraph "功能增强"
-        PROMPT_TEMPLATES[提示词模板]
-        CONTEXT_MANAGER[上下文管理]
-        MEMORY_SYSTEM[记忆系统]
-        TOOL_INTEGRATION[工具集成]
+    subgraph "Feature Enhancement"
+        PROMPT_TEMPLATES[Prompt Templates]
+        CONTEXT_MANAGER[Context Manager]
+        MEMORY_SYSTEM[Memory System]
+        TOOL_INTEGRATION[Tool Integration]
     end
 
     ADK_WRAPPER --> LITE_LLM
@@ -577,56 +577,56 @@ graph LR
     style PROMPT_TEMPLATES fill:#fff3e0
 ```
 
-### 5. 工具系统架构
+### 5. Tool System Architecture
 
 ```mermaid
 mindmap
-  root((工具系统))
-    内置工具
+  root((Tool System))
+    Built-in Tools
       Computer Use
-        VNC 远程控制
-        桌面自动化
-        文件操作
+        VNC Remote Control
+        Desktop Automation
+        File Operations
       Browser Use
-        Playwright 驱动
-        页面交互
-        数据抓取
+        Playwright Driver
+        Page Interaction
+        Data Scraping
       Web Search
-        Tavily 集成
-        多搜索引擎
-        结果过滤
+        Tavily Integration
+        Multi Search Engines
+        Result Filtering
       Code Interpreter
-        Python 执行
-        数据分析
-        可视化
+        Python Execution
+        Data Analysis
+        Visualization
 
-    外部集成
-      MCP 工具
-        自定义协议
-        第三方服务
-        扩展接口
+    External Integrations
+      MCP Tools
+        Custom Protocol
+        Third-party Services
+        Extension Interface
       Composio
-        500+ 工具
-        SaaS 集成
-        API 连接器
+        500+ Tools
+        SaaS Integration
+        API Connectors
       Pipedream
-        工作流自动化
-        事件触发
-        数据管道
+        Workflow Automation
+        Event Triggers
+        Data Pipeline
 
-    数据提供者
+    Data Providers
         Amazon
         LinkedIn
         Twitter
         Yahoo Finance
         Zillow
 
-    开发框架
-        工具注册表
-        参数验证
-        结果解析
-        错误处理
-        日志记录
+    Development Framework
+        Tool Registry
+        Parameter Validation
+        Result Parsing
+        Error Handling
+        Logging
 ```
 
 ## 🎯 Core Features & Modules
@@ -656,11 +656,11 @@ mindmap
 - Custom MCP service integration
 - Custom external tool service integration
 
-### 6. 数据库架构
+### 6. Database Architecture
 
 ```mermaid
 erDiagram
-    %% 用户认证相关表
+    %% User Authentication Tables
     auth_users {
         string id PK
         string email UK
@@ -686,7 +686,7 @@ erDiagram
         timestamp created_at
     }
 
-    %% 项目相关表
+    %% Project Related Tables
     projects {
         string id PK
         string account_id FK
@@ -717,7 +717,7 @@ erDiagram
         timestamp created_at
     }
 
-    %% 代理相关表
+    %% Agent Related Tables
     agents {
         string id PK
         string account_id FK
@@ -757,7 +757,7 @@ erDiagram
         timestamp completed_at
     }
 
-    %% ADK 框架相关表
+    %% ADK Framework Related Tables
     app_states {
         string app_id PK
         json state
@@ -786,7 +786,7 @@ erDiagram
         timestamp updated_at
     }
 
-    %% 外部集成表
+    %% External Integration Tables
     api_keys {
         string id PK
         string user_id FK
@@ -797,7 +797,7 @@ erDiagram
         timestamp last_used
     }
 
-    %% 关系定义
+    %% Relationship Definitions
     auth_users ||--o{ user_sessions : has
     auth_users ||--o{ refresh_tokens : has
     auth_users ||--o{ projects : owns
@@ -816,43 +816,43 @@ erDiagram
     auth_users ||--|| user_states : has
 ```
 
-### 7. 安全架构
+### 7. Security Architecture
 
 ```mermaid
 graph TB
-    subgraph "认证层"
-        JWT_AUTH[JWT 认证]
-        REFRESH_TOKEN[刷新令牌]
-        SESSION_MGR[会话管理]
-        OAUTH[OAuth 集成]
+    subgraph "Authentication Layer"
+        JWT_AUTH[JWT Authentication]
+        REFRESH_TOKEN[Refresh Token]
+        SESSION_MGR[Session Management]
+        OAUTH[OAuth Integration]
     end
 
-    subgraph "授权层"
-        RBAC[基于角色的访问控制]
-        PERMISSION_CHECKER[权限检查器]
-        RESOURCE_POLICY[资源策略]
-        API_LIMITER[API 限流]
+    subgraph "Authorization Layer"
+        RBAC[Role-Based Access Control]
+        PERMISSION_CHECKER[Permission Checker]
+        RESOURCE_POLICY[Resource Policy]
+        API_LIMITER[API Rate Limiter]
     end
 
-    subgraph "数据安全"
-        ENCRYPTION[数据加密]
-        KEY_MGR[密钥管理]
-        DATA_MASKING[数据脱敏]
-        AUDIT_LOG[审计日志]
+    subgraph "Data Security"
+        ENCRYPTION[Data Encryption]
+        KEY_MGR[Key Management]
+        DATA_MASKING[Data Masking]
+        AUDIT_LOG[Audit Log]
     end
 
-    subgraph "网络安全"
-        HTTPS[HTTPS 传输]
-        CORS_POLICY[CORS 策略]
-        RATE_LIMITING[速率限制]
-        IP_WHITELIST[IP 白名单]
+    subgraph "Network Security"
+        HTTPS[HTTPS Transmission]
+        CORS_POLICY[CORS Policy]
+        RATE_LIMITING[Rate Limiting]
+        IP_WHITELIST[IP Whitelist]
     end
 
-    subgraph "沙箱安全"
-        CONTAINER_ISOLATION[容器隔离]
-        NETWORK_ISOLATION[网络隔离]
-        FILE_ISOLATION[文件隔离]
-        RESOURCE_QUOTAS[资源配额]
+    subgraph "Sandbox Security"
+        CONTAINER_ISOLATION[Container Isolation]
+        NETWORK_ISOLATION[Network Isolation]
+        FILE_ISOLATION[File Isolation]
+        RESOURCE_QUOTAS[Resource Quotas]
     end
 
     JWT_AUTH --> RBAC
@@ -1044,55 +1044,55 @@ import sentry_sdk
 - Rate limiting on API endpoints
 - SQL injection prevention through SQLAlchemy ORM
 
-### 8. 部署架构
+### 8. Deployment Architecture
 
 ```mermaid
 graph TB
-    subgraph "本地开发环境"
-        DEV_FRONTEND[前端开发服务器<br/>:3000]
-        DEV_API[API 开发服务器<br/>:8000]
-        DEV_DB[(本地 PostgreSQL)]
-        DEV_REDIS[(本地 Redis)]
+    subgraph "Local Development Environment"
+        DEV_FRONTEND[Frontend Dev Server<br/>:3000]
+        DEV_API[API Dev Server<br/>:8000]
+        DEV_DB[(Local PostgreSQL)]
+        DEV_REDIS[(Local Redis)]
     end
 
-    subgraph "Docker 容器化部署"
-        subgraph "前端容器"
-            NGINX[Nginx 反向代理]
-            NEXTJS[Next.js 应用]
+    subgraph "Docker Containerized Deployment"
+        subgraph "Frontend Container"
+            NGINX[Nginx Reverse Proxy]
+            NEXTJS[Next.js Application]
         end
 
-        subgraph "后端容器"
-            FASTAPI[FastAPI 服务]
-            WORKER1[Worker 进程 1]
-            WORKER2[Worker 进程 2]
-            WORKERN[Worker 进程 N]
+        subgraph "Backend Container"
+            FASTAPI[FastAPI Service]
+            WORKER1[Worker Process 1]
+            WORKER2[Worker Process 2]
+            WORKERN[Worker Process N]
         end
 
-        subgraph "数据容器"
+        subgraph "Data Container"
             PG_CONTAINER[(PostgreSQL)]
             REDIS_CONTAINER[(Redis)]
         end
     end
 
-    subgraph "生产环境"
-        subgraph "负载均衡层"
-            LB[负载均衡器]
-            CDN[CDN 加速]
+    subgraph "Production Environment"
+        subgraph "Load Balancing Layer"
+            LB[Load Balancer]
+            CDN[CDN Acceleration]
         end
 
-        subgraph "应用层"
-            APP1[应用实例 1]
-            APP2[应用实例 2]
-            APPN[应用实例 N]
+        subgraph "Application Layer"
+            APP1[Application Instance 1]
+            APP2[Application Instance 2]
+            APPN[Application Instance N]
         end
 
-        subgraph "数据库集群"
-            PG_MASTER[(PostgreSQL 主库)]
-            PG_SLAVE[(PostgreSQL 从库)]
-            REDIS_CLUSTER[(Redis 集群)]
+        subgraph "Database Cluster"
+            PG_MASTER[(PostgreSQL Master)]
+            PG_SLAVE[(PostgreSQL Slave)]
+            REDIS_CLUSTER[(Redis Cluster)]
         end
 
-        subgraph "监控与日志"
+        subgraph "Monitoring & Logging"
             PROMETHEUS[Prometheus]
             GRAFANA[Grafana]
             ELK_STACK[ELK Stack]
@@ -1137,45 +1137,45 @@ graph TB
     style PROMETHEUS fill:#e8f5e9
 ```
 
-### 9. 监控与可观测性架构
+### 9. Monitoring & Observability Architecture
 
 ```mermaid
 graph LR
-    subgraph "数据收集层"
-        LOG_COLLECTOR[日志收集器]
-        METRICS_COLLECTOR[指标收集器]
-        TRACE_COLLECTOR[链路追踪收集器]
-        EVENT_COLLECTOR[事件收集器]
+    subgraph "Data Collection Layer"
+        LOG_COLLECTOR[Log Collector]
+        METRICS_COLLECTOR[Metrics Collector]
+        TRACE_COLLECTOR[Trace Collector]
+        EVENT_COLLECTOR[Event Collector]
     end
 
-    subgraph "数据处理层"
-        LOG_PROCESSOR[日志处理器]
-        METRICS_PROCESSOR[指标处理器]
-        TRACE_PROCESSOR[链路处理器]
-        ALERT_PROCESSOR[告警处理器]
+    subgraph "Data Processing Layer"
+        LOG_PROCESSOR[Log Processor]
+        METRICS_PROCESSOR[Metrics Processor]
+        TRACE_PROCESSOR[Trace Processor]
+        ALERT_PROCESSOR[Alert Processor]
     end
 
-    subgraph "存储层"
+    subgraph "Storage Layer"
         ELASTICSEARCH[(Elasticsearch)]
         PROMETHEUS_DB[(Prometheus TSDB)]
-        JAEGER[Jaeger 存储]
-        EVENT_STORE[(事件存储)]
+        JAEGER[Jaeger Storage]
+        EVENT_STORE[(Event Store)]
     end
 
-    subgraph "可视化层"
-        KIBANA[Kibana 日志分析]
-        GRAFANA_DASH[Grafana 仪表板]
-        JAEGER_UI[Jaeger 追踪界面]
+    subgraph "Visualization Layer"
+        KIBANA[Kibana Log Analysis]
+        GRAFANA_DASH[Grafana Dashboard]
+        JAEGER_UI[Jaeger Tracing UI]
         ALERT_MANAGER[AlertManager]
     end
 
-    subgraph "数据源"
-        APPLICATION_LOGS[应用日志]
-        SYSTEM_LOGS[系统日志]
-        API_METRICS[API 指标]
-        BUSINESS_METRICS[业务指标]
-        ERROR_TRACKING[错误追踪]
-        PERFORMANCE_TRACES[性能追踪]
+    subgraph "Data Sources"
+        APPLICATION_LOGS[Application Logs]
+        SYSTEM_LOGS[System Logs]
+        API_METRICS[API Metrics]
+        BUSINESS_METRICS[Business Metrics]
+        ERROR_TRACKING[Error Tracking]
+        PERFORMANCE_TRACES[Performance Traces]
     end
 
     APPLICATION_LOGS --> LOG_COLLECTOR
